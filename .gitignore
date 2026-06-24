@@ -32,7 +32,7 @@ data/processed/
 *.parquet
 
 # Trained model artifacts
-models/
+/models/
 *.joblib
 *.pkl
 
@@ -44,6 +44,12 @@ models/
 # Logs
 *.log
 logs/
+
+# Generated analysis artifacts
+outputs/reports/
+outputs/figures/*
+!outputs/figures/logistic_feature_importance.png
+!outputs/figures/xgboost_threshold_performance.png
 
 # Build and packaging artifacts
 build/

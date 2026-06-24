@@ -163,7 +163,8 @@ The challenger model uses:
 - Regularized tree parameters
 
 Both preprocessing and estimation steps are saved as complete Scikit-learn
-pipelines with Joblib.
+pipelines with Joblib. Trained model files are generated locally under
+`models/` and are excluded from Git.
 
 ## 7. Results
 
@@ -198,22 +199,28 @@ collections capacity, and risk appetite rather than F1 alone.
 
 ![XGBoost threshold performance](outputs/figures/xgboost_threshold_performance.png)
 
+### Model Interpretation
+
+The logistic baseline provides a transparent view of the strongest positive
+and negative coefficient signals after preprocessing and one-hot encoding.
+
+![Logistic regression feature importance](outputs/figures/logistic_feature_importance.png)
+
 ## 8. Repository Structure
 
 ```text
 ifrs9-home-credit-pd-model/
-|-- data/
-|   |-- raw/
-|   `-- processed/
-|-- models/
 |-- notebooks/
 |   |-- 01_download_data.ipynb
 |   |-- 02_data_overview.ipynb
 |   |-- 03_target_eda.ipynb
 |   `-- 04_model_interpretation.ipynb
 |-- outputs/
-|   |-- figures/
-|   `-- reports/
+|   `-- figures/
+|       |-- logistic_feature_importance.png
+|       `-- xgboost_threshold_performance.png
+|-- scripts/
+|   `-- preview_headers.py
 |-- src/
 |   |-- features/
 |   |   |-- compute_bureau_features.py
@@ -230,6 +237,11 @@ ifrs9-home-credit-pd-model/
 |-- README.md
 `-- requirements.txt
 ```
+
+The workflow also creates `data/raw/`, `data/processed/`, `models/`, and
+`outputs/reports/` locally. These generated datasets, model artifacts, and
+detailed reports are excluded from Git; only the two portfolio-level figures
+shown above are retained.
 
 ### Reproducing the Workflow
 
